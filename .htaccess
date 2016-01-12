@@ -1,0 +1,68 @@
+Options +FollowSymLinks
+#Redirect 301 /index.html http://localhost:8181/artlab/home.html
+
+#DirectoryIndex home.html
+
+# BEGIN ArtLab
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+#RewriteCond %{REQUEST_URI} !\.(css|js|gif|png|jpe?g)$
+#RewriteRule (.*)$ /index.php [L]
+
+#RewriteRule (.*)\.(css|js|jpg|gif|png) [P]
+
+#RewriteCond %{REQUEST_FILENAME} .*css$ [NC]
+#RewriteRule ^styles/(.*)\.css$ styles/$1.css [L]
+#RewriteRule \.(js|css)$ - [F]
+
+#RewriteBase /artlab/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /artlab/index.php [L]
+
+#RewriteRule  ^all-([a-z\-]+)-hotels\.html$    index.php?node=$1 [L]
+#RewriteRule  ^news/news-([0-9]+)-(.*)\.html$    news/index.html?nID=$1&mode=read [L]
+
+
+#Normal Pages
+RewriteRule  ^home\.html$    index.php?node=0 [L]
+RewriteRule  ^ourservices\.html$    index.php?node=1 [L]
+RewriteRule  ^portfolio\.html$    index.php?node=2 [L]
+RewriteRule  ^clients\.html$    index.php?node=3 [L]
+RewriteRule  ^contactus\.html$    index.php?node=4 [L]
+RewriteRule  ^about\.html$    index.php?node=5 [L]
+RewriteRule  ^privacy-policy\.html$    index.php?node=6 [L]
+RewriteRule  ^careers\.html$    index.php?node=7 [L]
+RewriteRule  ^news\.html$    index.php?node=8 [L]
+RewriteRule  ^thank-you\.html$    index.php?node=9 [L]
+RewriteRule  ^useful-links\.html$    index.php?node=10 [L]
+#End of Normal Pages
+
+#News URL
+RewriteRule  ^news/news-([0-9]+)\.html$    index.php?node=8&news=$1 [L]
+RewriteRule  ^news/page-([0-9]+)\.html$    index.php?node=8&page=$1 [L]
+
+#Portfolio URL
+RewriteRule  ^portfolio/taxonomy-([0-9]+)\.html$    index.php?node=2&taxonomy=$1 [L]
+RewriteRule  ^portfolio/taxonomy-([0-9]+)-([0-9]+)\.html$    index.php?node=2&taxonomy=$1&profile=$2 [L]
+
+</IfModule>
+
+# END ArtLab
+
+ErrorDocument 301 /error.php
+ErrorDocument 302 /error.php
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 "Error in page"
+ErrorDocument 405 /error.php
+ErrorDocument 408 /error.php
+ErrorDocument 415 /error.php
+ErrorDocument 500 /error.php
+ErrorDocument 501 /error.php
+ErrorDocument 502 /error.php
+ErrorDocument 503 /error.php
+ErrorDocument 504 /error.php
+ErrorDocument 505 /error.php

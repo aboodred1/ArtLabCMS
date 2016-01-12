@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {background: url(bg.png) repeat-x;}
+
+.logo{ text-align:center; margin: 75px 0 20px 0;}
+
+.flash{text-align:center;}
+
+.footer{margin-top: 15px; color:#fff; font-family:Arial, Helvetica, sans-serif; font-size:11px; text-align:center; clear:both;}
+.footer a
+{
+	color: #fff;
+	text-decoration: none;
+}
+.footer a:hover
+{ text-decoration: underline;
+}
+.yellow{color:#f7941d;}
